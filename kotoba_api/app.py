@@ -6,7 +6,7 @@ from .util import download_file
 
 app_config = Settings()
 
-download_file(app_config.dict_uri, "./data")
+download_file(app_config.dict_uri, app_config.dict_download_dir)
 
 app = FastAPI()
 
