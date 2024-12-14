@@ -1,3 +1,5 @@
+"""Root module of kotoba-api"""
+
 from fastapi import FastAPI
 
 from .config import Settings
@@ -13,4 +15,5 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
+    """Responds at the root path with a placeholder message"""
     return "Hello, world!"
