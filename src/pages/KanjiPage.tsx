@@ -8,9 +8,7 @@ function KanjiPage() {
   return (
     <>
       <SearchBar />
-      <div className="mt-3">
-        <Kanji literal={literal!} />
-      </div>
+      <div className="mt-3">{literal && <Kanji literal={literal} />}</div>
     </>
   );
 }
