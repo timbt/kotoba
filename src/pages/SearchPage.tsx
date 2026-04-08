@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 
 import SearchBar from "../components/SearchBar";
+import SearchResults from "../components/SearchResults";
 
 function SearchPage() {
   const { query } = useParams<{ query: string }>();
@@ -8,7 +9,7 @@ function SearchPage() {
   return (
     <>
       <SearchBar />
-      <div>{query}</div>
+      <SearchResults query={query!} />
     </>
   );
 }
