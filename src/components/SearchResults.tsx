@@ -1,4 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import Accordion from "react-bootstrap/Accordion";
+import Container from "react-bootstrap/Container";
 
 import { client } from "../api/client";
 import {
@@ -33,7 +35,30 @@ function SearchResults({ searchQuery }: Props) {
     );
   });
 
-  return <ul>{entries}</ul>;
+  const formatResultCount = (n: number): string =>
+    n == 1 ? "1 result found" : `${n} results found`;
+
+  const kanjiResults = data.search.kanji.length;
+  const totalResults = kanjiResults;
+
+  return (
+    <Container className="mt-3">
+      <h3>
+        Searched for "{data.search.search_query}":{" "}
+        {formatResultCount(totalResults)}.
+      </h3>
+      <Accordion defaultActiveKey="kanji">
+        <Accordion.Item eventKey="kanji">
+          <Accordion.Header>
+            Kanji - {formatResultCount(kanjiResults)}
+          </Accordion.Header>
+          <Accordion.Body>
+            <ul>{entries}</ul>
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
+    </Container>
+  );
 }
 
 export default SearchResults;
