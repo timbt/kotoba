@@ -16,7 +16,7 @@ function App() {
       </Navbar>
       <Routes>
         <Route path="/kanji/:literal" element={<KanjiPage />} />
-        <Route path="/search/:query" element={<SearchPage />} />
+        <Route path="/search/:searchQuery" element={<SearchPage />} />
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Container>

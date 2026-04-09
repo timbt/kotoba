@@ -4,12 +4,12 @@ import SearchBar from "../components/SearchBar";
 import SearchResults from "../components/SearchResults";
 
 function SearchPage() {
-  const { query } = useParams<{ query: string }>();
+  const { searchQuery } = useParams<{ searchQuery: string }>();
 
   return (
     <>
       <SearchBar />
-      <SearchResults query={query!} />
+      <SearchResults searchQuery={searchQuery!} />
     </>
   );
 }
