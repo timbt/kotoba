@@ -15,7 +15,7 @@ function KanjiSearchResult({ kanji }: Props) {
       onClick={() => navigate(`/kanji/${kanji.literal}`)}
       className="d-flex flex-column align-items-center"
     >
-      <span>{kanji.literal}</span>
+      <span style={{ fontSize: "2rem" }}>{kanji.literal}</span>
       {kanji.meanings[0] && <small>{kanji.meanings[0]}</small>}
     </Button>
   );
