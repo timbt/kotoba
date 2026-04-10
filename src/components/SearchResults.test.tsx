@@ -80,6 +80,33 @@ describe("SearchResults", () => {
     ).toBeInTheDocument();
   });
 
+  it("renders a button for each kanji result", async () => {
+    vi.mocked(client.request).mockResolvedValue(
+      mockData([
+        { literal: "川", meanings: ["river"] },
+        { literal: "河", meanings: ["river"] },
+      ]),
+    );
+    render(<SearchResults searchQuery="river" />, { wrapper });
+    await screen.findByRole("heading", { level: 3 });
+    expect(screen.getByRole("button", { name: /川/ })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /河/ })).toBeInTheDocument();
+  });
+
+  it("renders the first meaning of each kanji result", async () => {
+    vi.mocked(client.request).mockResolvedValue(
+      mockData([
+        { literal: "猫", meanings: ["cat", "feline"] },
+        { literal: "犬", meanings: ["dog"] },
+      ]),
+    );
+    render(<SearchResults searchQuery="animals" />, { wrapper });
+    await screen.findByRole("heading", { level: 3 });
+    expect(screen.getByText("cat")).toBeInTheDocument();
+    expect(screen.queryByText("feline")).not.toBeInTheDocument();
+    expect(screen.getByText("dog")).toBeInTheDocument();
+  });
+
   it('displays "0 results found" in the header and kanji accordion when there are no results', async () => {
     vi.mocked(client.request).mockResolvedValue(mockData([]));
     render(<SearchResults searchQuery="cat" />, { wrapper });
