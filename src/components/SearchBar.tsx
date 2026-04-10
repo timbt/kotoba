@@ -11,7 +11,7 @@ function SearchBar() {
 
   function handleSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
-    if (value) navigate(`/kanji/${value}`);
+    if (value) navigate(`/search/${value}`);
   }
 
   return (
@@ -20,7 +20,7 @@ function SearchBar() {
         <Form.Control
           as="input"
           type="text"
-          placeholder="Lookup a kanji by its literal (eg. '猫')"
+          placeholder="Search for something... (eg. 'cat' or '猫')"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />

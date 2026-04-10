@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router";
 
 import KanjiPage from "./pages/KanjiPage";
 import MainPage from "./pages/MainPage";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       </Navbar>
       <Routes>
         <Route path="/kanji/:literal" element={<KanjiPage />} />
+        <Route path="/search/:searchQuery" element={<SearchPage />} />
         <Route path="/" element={<MainPage />} />
       </Routes>
     </Container>

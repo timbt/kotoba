@@ -23,12 +23,12 @@ describe("SearchBar", () => {
     expect(screen.getByRole("button", { name: "Search" })).toBeInTheDocument();
   });
 
-  it("navigates to the kanji page on submit", async () => {
+  it("navigates to the search page on submit", async () => {
     const user = userEvent.setup();
     render(<SearchBar />, { wrapper: MemoryRouter });
     await user.type(screen.getByRole("textbox"), "猫");
     await user.click(screen.getByRole("button", { name: "Search" }));
-    expect(mockNavigate).toHaveBeenCalledWith("/kanji/猫");
+    expect(mockNavigate).toHaveBeenCalledWith("/search/猫");
   });
 
   it("does not navigate when input is empty", async () => {
