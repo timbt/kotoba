@@ -9,5 +9,8 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: ["./src/test/setup.ts"],
+    // Node.js v25 ships a native Web Storage API that conflicts with jsdom's
+    // localStorage implementation, producing "--localstorage-file" warnings.
+    execArgv: ["--no-webstorage"],
   },
 });
